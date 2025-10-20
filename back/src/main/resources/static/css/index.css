@@ -1,0 +1,222 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #141414;
+  color: white;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 헤더 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  color: #e50914;
+}
+
+.homeLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 25px;
+}
+
+/* 헤더 회원가입 버튼*/
+.signup-btn {
+  background: #e50914;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 헤더 로그인 버튼 */
+.login-btn {
+  background: #e50914;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 홈 배너 */
+.banner {
+  height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  position: relative;
+}
+
+.banner::before {
+  content: "";
+  opacity: 0.5;
+  z-index: -1;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.banner h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.banner .start-btn {
+  background: #e50914;
+  color: white;
+  font-size: 1.2rem;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.banner .start-btn:hover,
+.login-btn:hover {
+  background: #f40612;
+}
+
+/* 로그인 시 보이는 컨텐츠 */
+#contents {
+  display: none;
+  padding: 30px 50px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 10px;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0 10px 10px 10px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* 모달 배경 */
+.modal {
+  display: none; /* 기본적으로 안 보이게 */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 컨테이너 */
+.modal-content {
+  background-color: #1e1e1e;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #E50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-content button:hover {
+  background-color: #B81D24;
+}
+
+/* 닫기 X */
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-icon:hover {
+  color: #E50914;
+}

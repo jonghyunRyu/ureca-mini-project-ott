@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>OTT</title>
+  <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1><a href="/" class="homeLink">OTT</a></h1>
+    <div class="header-buttons">
+      <button class="signup-btn" id="signupBtn" onclick="openModal('signupModal')">회원가입</button>
+      <button class="login-btn" id="loginBtn" onclick="openModal('loginModal')">로그인</button>
+    </div>
+  </header>
+
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-icon" onclick="closeModal()">✕</span>
+      <h2>로그인</h2>
+      <form id="loginForm">
+        <input type="text" id="loginId" placeholder="아이디" required />
+        <input type="password" id="loginPw" placeholder="비밀번호" required />
+        <button type="submit" id="modalLoginBtn">로그인</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 회원가입 모달 -->
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <span class="close-icon" onclick="closeModal()">✕</span>
+      <h2>회원가입</h2>
+      <form id="signupForm">
+        <input type="text" id="signupId" placeholder="아이디" required />
+        <input type="email" id="signupEmail" placeholder="이메일" required />
+        <input type="password" id="signupPw" placeholder="비밀번호" required />
+        <input type="password" id="signupPwConfirm" placeholder="비밀번호 확인" required />
+        <button type="submit" id="modalSignupBtn">회원가입</button>
+      </form>
+    </div>
+  </div>
+  
+  <section id="contents">
+    <h2>추천 콘텐츠</h2>
+    <div class="content-grid" id="contentGrid"></div>
+  </section>
+
+  <section class="banner" id="banner">
+    <h2>영화와 드라마, 무제한 시청</h2>
+    <p>어디서든 자유롭게. 언제든 해지 가능.</p>
+    <button class="start-btn" onclick="openModal('signupModal')">지금 시작하기</button>
+  </section>
+
+  <script src="index.js"></script>
+</body>
+</html>
