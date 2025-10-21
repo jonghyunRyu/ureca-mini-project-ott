@@ -10,4 +10,9 @@
     VALUES (#{id}, #{password}, #{email}, #{nickname})
   </insert>
   
+  <select id="login" parameterType="Member" resultType="Member">
+  	SELECT id AS no, user_id AS id, password, email, nickname
+	FROM user WHERE user_id=#{id} and password=#{password}
+  </select>
+  
 </mapper>

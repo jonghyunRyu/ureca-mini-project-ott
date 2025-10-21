@@ -6,5 +6,8 @@ import com.ureca.web.model.dto.Member;
 
 @Mapper
 public interface MemberDao {
+	
 	public void registerMember(Member member);
+	
+	public Member login(Member member);
 }
