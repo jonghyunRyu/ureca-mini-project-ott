@@ -10,4 +10,8 @@ public interface MemberDao {
 	public void registerMember(Member member);
 	
 	public Member login(Member member);
+	
+	public int countById(Member member);
+	
+	public int countByEmail(Member member);
 }

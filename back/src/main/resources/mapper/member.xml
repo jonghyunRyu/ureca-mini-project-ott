@@ -15,4 +15,13 @@
 	FROM user WHERE user_id=#{id} and password=#{password}
   </select>
   
+   <!-- 아이디 중복 체크 -->
+  <select id="countById" parameterType="Member" resultType="int">
+    SELECT COUNT(*) FROM user WHERE user_id = #{id}
+  </select>
+
+  <!-- 이메일 중복 체크 -->
+  <select id="countByEmail" parameterType="Member" resultType="int">
+    SELECT COUNT(*) FROM user WHERE email = #{email}
+  </select>
 </mapper>

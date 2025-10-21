@@ -30,6 +30,10 @@ public class MemberController {
 			response.put("msg", "success");
 		} catch (UplusException e) {
 			e.printStackTrace();
+			response.put("msg", e.getMessage());
+		} catch (Exception e) {
+			response.put("msg", "서버 오류 발생");
+			e.printStackTrace();
 		}
 		
 		return response;

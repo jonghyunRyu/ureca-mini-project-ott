@@ -32,6 +32,39 @@ document.getElementById("modalSignupBtn").addEventListener("click", async (e) =>
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
+  const { id, password, passwordConfirm, email, nickname } = data;
+  
+  const idRegex = /^[a-z][a-z0-9_]{4,19}$/;
+  const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const nicknameRegex = /^[가-힣a-zA-Z0-9_]{2,10}$/;
+  
+  // 유효성 검사
+  if (!idRegex.test(id)) {
+    alert("아이디 형식을 확인하세요");
+    return;
+  }
+
+  if (!pwRegex.test(password)) {
+    alert("비밀번호 형식을 확인하세요");
+    return;
+  }
+
+  if (password !== passwordConfirm) {
+    alert("비밀번호가 일치하지 않습니다");
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    alert("이메일 형식을 확인하세요");
+    return;
+  }
+
+  if (!nicknameRegex.test(nickname)) {
+    alert("닉네임 형식을 확인하세요");
+    return;
+  }
+
   try {
     const res = await fetch("/signup", {
       method: "POST",
@@ -59,6 +92,20 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
 
   const id = document.getElementById("loginId").value;
   const password = document.getElementById("loginPw").value;
+
+  const idRegex = /^[a-z][a-z0-9-]{4,19}$/;
+  const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+
+  // 유효성 검사
+  if (!idRegex.test(id)) {
+    alert("아이디 형식을 확인하세요");
+    return;
+  }
+
+  if (!pwRegex.test(password)) {
+    alert("비밀번호 형식을 확인하세요");
+    return;
+  }
 
   try {
     const res = await fetch("/login", {
