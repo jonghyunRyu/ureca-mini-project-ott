@@ -115,8 +115,10 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
     });
 
     const result = await res.json();
+    const userNickname = result.user.nickname;
     if (result.msg === "success") {
-      alert(`로그인 성공! 환영합니다 ${result.user.nickname}님`);
+      alert(`로그인 성공! 환영합니다 ${userNickname}님`);
+      updateHeaderForLogin(userNickname);
       closeModal("loginModal");
     } else {
       alert("로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.");
@@ -126,3 +128,37 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
     alert("서버 오류 발생");
   }
 });
+
+// 로그인 상태 헤더 UI 전환
+function updateHeaderForLogin(nickname) {
+  const headerButtons = document.querySelector(".header-buttons");
+  headerButtons.innerHTML = `
+    <span class="welcome-text">안녕하세요, <b>${nickname}</b>님</span>
+    <button class="logout-btn" onclick="logout()">로그아웃</button>
+  `;
+}
+
+// 로그아웃 버튼 클릭 시 서버로 요청
+async function logout() {
+  try {
+    const res = await fetch("/logout", { method: "POST" });
+    if (res.ok) {
+      updateHeaderForLogout(); // UI 초기화
+      alert("로그아웃 되었습니다.");
+    } else {
+      alert("로그아웃 실패. 다시 시도해주세요.");
+    }
+  } catch (err) {
+    console.error("로그아웃 요청 실패:", err);
+    alert("서버 오류가 발생했습니다.");
+  }
+}
+
+// 로그아웃 시 헤더 UI 전환
+function updateHeaderForLogout() {
+  const headerButtons = document.querySelector(".header-buttons");
+  headerButtons.innerHTML = `
+    <button class="signup-btn" id="signupBtn" onclick="openModal('signupModal')">회원가입</button>
+    <button class="login-btn" id="loginBtn" onclick="openModal('loginModal')">로그인</button>
+  `;
+}

@@ -12,6 +12,9 @@ import com.ureca.web.model.UplusException;
 import com.ureca.web.model.dto.Member;
 import com.ureca.web.model.service.MemberService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class LoginController {
 	
@@ -19,7 +22,7 @@ public class LoginController {
 	MemberService memberService;
 	
 	@PostMapping("/login")
-	public Map<String, Object> login(@RequestBody Member m) {
+	public Map<String, Object> login(@RequestBody Member m, HttpServletRequest request) {
 		System.out.println(m);
 		
 		Map<String, Object> response = new HashMap();
@@ -29,6 +32,9 @@ public class LoginController {
 			System.out.println(loginUser);
 			
 			if (loginUser != null) {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("user", loginUser);
+				
 				response.put("msg", "success");
                 response.put("user", loginUser);
 				
@@ -45,5 +51,19 @@ public class LoginController {
 		}
 		
 		return response;
+	}
+	
+	@PostMapping("/logout")
+	public String upidLogout(HttpServletRequest request) {
+		HttpSession session=request.getSession(false);
+		
+		if(session != null) {
+			session.invalidate();
+			return null;
+			
+		} else {
+			//침해 대응 코드
+			return "Get out~!";
+		}
 	}
 }

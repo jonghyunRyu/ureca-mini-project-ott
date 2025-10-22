@@ -36,6 +36,7 @@ header h1 {
 
 .header-buttons {
   display: flex;
+  align-items: center;
   gap: 25px;
 }
 
@@ -55,6 +56,28 @@ header h1 {
   background: #e50914;
   border: none;
   padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 헤더 프로필 */
+.welcome-text {
+  color: #fff;         
+  font-size: 16px;      
+  font-weight: 500;     
+}
+
+.welcome-text .nickname {
+  color: #e50914;       
+}
+
+/* 헤더 로그아웃 버튼 */
+.logout-btn {
+  background: #e50914;
+  border: none;
+  padding: 8px 15px;
   border-radius: 4px;
   color: white;
   cursor: pointer;
