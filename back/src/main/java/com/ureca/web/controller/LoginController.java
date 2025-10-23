@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,16 +55,29 @@ public class LoginController {
 	}
 	
 	@PostMapping("/logout")
-	public String upidLogout(HttpServletRequest request) {
-		HttpSession session=request.getSession(false);
-		
-		if(session != null) {
-			session.invalidate();
-			return null;
-			
-		} else {
-			//침해 대응 코드
-			return "Get out~!";
-		}
+	public Map<String, String> logout(HttpServletRequest request) {
+	    HttpSession session = request.getSession(false);
+
+	    if(session != null) {
+	        session.invalidate();
+	        return Map.of("msg", "logout success");
+	    } else {
+	        return Map.of("msg", "no session");
+	    }
+	}
+	
+	@GetMapping("/check")
+	public Map<String, Object> checkSession(HttpSession session) {
+	    Map<String, Object> response = new HashMap<>();
+	    Object user = session.getAttribute("user");
+	    System.out.println("현재 세션 ID: " + session.getId());
+	    System.out.println("세션에 저장된 user: " + user);
+	    
+	    if (user != null) {
+	        response.put("isLogin", true);
+	    } else {
+	        response.put("isLogin", false);
+	    }
+	    return response;
 	}
 }

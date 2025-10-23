@@ -73,17 +73,6 @@ header h1 {
   color: #e50914;       
 }
 
-/* 헤더 로그아웃 버튼 */
-.logout-btn {
-  background: #e50914;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 /* 홈 배너 */
 .banner {
   height: calc(100vh - 110px);

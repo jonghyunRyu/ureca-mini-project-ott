@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>콘텐츠 홈</title>
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/home.html" class="homeLink">OTT</a></h1>
+    <nav class="tab-menu">
+      <button class="tab-btn active" data-type="series">시리즈</button>
+      <button class="tab-btn" data-type="movie">영화</button>
+      <button class="tab-btn" data-type="animation">애니메이션</button>
+    </nav>
+    <div class="header-right">
+      <select id="sortSelect">
+        <option value="recommend">추천순</option>
+        <option value="recent">최근 등록순</option>
+        <option value="genre">장르순</option>
+      </select>
+      <div class="header-rightBtn">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="contentList" class="content-list">
+      <!-- 콘텐츠 카드가 여기에 동적으로 들어감 -->
+    </section>
+  </main>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
