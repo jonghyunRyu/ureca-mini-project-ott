@@ -55,9 +55,13 @@ header h1 {
   transition: color 0.3s;
 }
 
-.tab-btn.active {
+.tab-btn:active {
   color: #e50914;
   border-bottom: 2px solid #e50914;
+}
+
+.tab-btn:hover {
+  color: #e50914;
 }
 
 .header-right {
@@ -85,36 +89,115 @@ header h1 {
   font-size: 16px;
 }
 
-.content-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 30px 40px;
+/* 콘텐츠 섹션 */
+.genre-section {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
+.genre-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-left: 5px solid #ff4c4c;
+  padding-left: 10px;
+}
+
+/* 콘텐츠 카드 리스트 */
+.content-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* 콘텐츠 카드 */
 .content-card {
-  background: #1f1f1f;
+  background-color: white;
   border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.2s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .content-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-.thumbnail {
+.content-card img {
   width: 100%;
-  height: 200px;
-  background: #333;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
 }
 
-.genre-tag {
-  display: inline-block;
+.content-card h3 {
+  font-size: 18px;
+  margin: 16px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.content-card p {
+  font-size: 14px;
+  margin: 0 16px 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.rating {
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff4c4c;
+  padding-left: 18px; /* 별 공간 확보 */
+  line-height: 1;
+}
+
+/* 별 아이콘을 ::before로 추가 */
+.rating::before {
+  content: '★';
+  color: #e50914;
   font-size: 13px;
-  color: #bbb;
-  margin-top: 5px;
+  line-height: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 16px 8px;
+  font-size: 13px;
+  color: #555;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.card-meta span {
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.genre {
+  color: #333;
+}
+
+.rating {
+  color: #e50914;
+}
+
+.year {
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 700; /* 더 강한 bold */
+  font-size: 14px;   /* 살짝 키우기 */
+  color: #333;       /* 더 진한 회색 */
+  font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; /* 숫자에 강한 폰트 */
+  letter-spacing: 0.5px; /* 숫자 간격 살짝 넓혀서 또렷하게 */
 }
