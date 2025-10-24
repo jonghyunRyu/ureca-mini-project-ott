@@ -162,6 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <p>${item.description}</p>
                 `;
+
+                card.addEventListener('click', () => window.location.href = `/detail.html?id=${item.id}`);
                 contentList.appendChild(card);
             });
 
@@ -191,5 +193,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderContents(currentFilter); // 현재 필터 기준으로 다시 렌더링
     });
 });
+
 
 
