@@ -16,4 +16,8 @@ public class ContentService {
     public List<Content> getContents() {
         return contentDao.getContents();
     }
+    
+    public Content getContentById(Long id) {
+        return contentDao.getContentById(id);
+    }
 }

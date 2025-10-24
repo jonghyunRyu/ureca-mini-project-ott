@@ -13,4 +13,5 @@ public class Content {
     private String description;
     private Double rating;
     private String img;
+    private String trailer_url;
 }

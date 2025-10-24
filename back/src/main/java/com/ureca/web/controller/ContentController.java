@@ -13,11 +13,15 @@ public class ContentController {
     @Autowired
     ContentService contentService;
 
-    // 전체 콘텐츠 목록
+    // 전체 컨텐츠 목록 가져오기
     @GetMapping("/getContents")
     public List<Content> getContents() {
         return contentService.getContents();
     }
-
+    
+    // 선택된 컨텐츠만 가져오기
+    @GetMapping("/contents/{id}")
+    public Content getContentDetail(@PathVariable Long id) {
+    	return contentService.getContentById(id);
+    }
 }
-

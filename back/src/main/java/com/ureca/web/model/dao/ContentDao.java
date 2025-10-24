@@ -10,4 +10,6 @@ import com.ureca.web.model.dto.Content;
 public interface ContentDao {
 	
     public List<Content> getContents();
+    
+    public Content getContentById(@Param("id") Long id);
 }
