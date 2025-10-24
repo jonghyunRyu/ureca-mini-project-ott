@@ -115,9 +115,10 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
     });
 
     const result = await res.json();
-    const userNickname = result.user.nickname;
-
+    
     if (result.msg === "success") {
+      const userNickname = result.user.nickname;
+      
       alert(`로그인 성공! 환영합니다 ${userNickname}님`);
       closeModal("loginModal");
       
