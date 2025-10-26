@@ -36,10 +36,10 @@ public class LoginController {
 			 
 			if (loginUser != null) {
 				HttpSession session = request.getSession(true);
+				session.setAttribute("user", loginUser);
 				System.out.println("========로그인 성공 시 세션 부여========");
 				System.out.println("Session created: " + session.isNew());
 				System.out.println("Session ID: " + session.getId());
-				session.setAttribute("user", loginUser);
 				
 				response.put("msg", "success");
                 response.put("user", loginUser);
@@ -79,7 +79,6 @@ public class LoginController {
 	    System.out.println("=============로그인 성공 이후 페이지 로드할 때 콘솔============");
 	    System.out.println("현재 세션 ID: " + session.getId());
 	    System.out.println("세션에 저장된 user: " + user);
-	    System.out.println("세션 생성 여부: " + session.isNew());
 	    System.out.println("세션 최대 유효 시간(초): " + session.getMaxInactiveInterval());
 	    System.out.println("세션 생성 시간: " + new Date(session.getCreationTime()));
 	    System.out.println("세션 마지막 접근 시간: " + new Date(session.getLastAccessedTime()));
