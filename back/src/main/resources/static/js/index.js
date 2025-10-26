@@ -41,27 +41,27 @@ document.getElementById("modalSignupBtn").addEventListener("click", async (e) =>
   
   // 유효성 검사
   if (!idRegex.test(id)) {
-    alert("아이디 형식을 확인하세요");
+    alert("아이디는 영문자와 숫자 조합으로 5~20자 이내로 입력해주세요.");
     return;
   }
 
   if (!pwRegex.test(password)) {
-    alert("비밀번호 형식을 확인하세요");
+    alert("비밀번호는 영문자, 숫자, 특수문자를 포함한 8자 이상으로 입력해주세요.");
     return;
   }
 
   if (password !== passwordConfirm) {
-    alert("비밀번호가 일치하지 않습니다");
+    alert("비밀번호와 동일하게 입력해주세요.");
     return;
   }
 
   if (!emailRegex.test(email)) {
-    alert("이메일 형식을 확인하세요");
+    alert("올바른 이메일 형식으로 입력해주세요. 예: example@domain.com");
     return;
   }
 
   if (!nicknameRegex.test(nickname)) {
-    alert("닉네임 형식을 확인하세요");
+    alert("닉네임은 2~10자 이내로 입력해주세요. 특수문자는 '_'만 사용가능합니다.");
     return;
   }
 
@@ -118,7 +118,7 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
     
     if (result.msg === "success") {
       const userNickname = result.user.nickname;
-      
+
       alert(`로그인 성공! 환영합니다 ${userNickname}님`);
       closeModal("loginModal");
       
@@ -133,37 +133,3 @@ document.getElementById("modalLoginBtn").addEventListener("click", async (e) => 
     alert("서버 오류 발생");
   }
 });
-
-// // 로그인 상태 헤더 UI 전환
-// function updateHeaderForLogin(nickname) {
-//   const headerButtons = document.querySelector(".header-buttons");
-//   headerButtons.innerHTML = `
-//     <span class="welcome-text">안녕하세요, <b>${nickname}</b>님</span>
-//     <button class="logout-btn" onclick="logout()">로그아웃</button>
-//   `;
-// }
-
-// // 로그아웃 버튼 클릭 시 서버로 요청
-// async function logout() {
-//   try {
-//     const res = await fetch("/logout", { method: "POST" });
-//     if (res.ok) {
-//       updateHeaderForLogout(); // UI 초기화
-//       alert("로그아웃 되었습니다.");
-//     } else {
-//       alert("로그아웃 실패. 다시 시도해주세요.");
-//     }
-//   } catch (err) {
-//     console.error("로그아웃 요청 실패:", err);
-//     alert("서버 오류가 발생했습니다.");
-//   }
-// }
-
-// // 로그아웃 시 헤더 UI 전환
-// function updateHeaderForLogout() {
-//   const headerButtons = document.querySelector(".header-buttons");
-//   headerButtons.innerHTML = `
-//     <button class="signup-btn" id="signupBtn" onclick="openModal('signupModal')">회원가입</button>
-//     <button class="login-btn" id="loginBtn" onclick="openModal('loginModal')">로그인</button>
-//   `;
-// }

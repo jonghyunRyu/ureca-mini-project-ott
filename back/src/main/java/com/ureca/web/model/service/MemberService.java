@@ -45,7 +45,7 @@ public class MemberService {
 	
 	        // 비밀번호 확인 체크
 	        if (m.getPasswordConfirm() == null || !m.getPassword().equals(m.getPasswordConfirm())) {
-	            throw new UplusException("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+	            throw new UplusException("입력하신 비밀번호가 서로 다릅니다. 다시 확인해주세요.");
 	        }
 	
 	        // 이메일 체크
@@ -97,6 +97,11 @@ public class MemberService {
 	        }
 	
 	        SaltInfo saltInfo = saltDao.selectSalt(m.getId());
+	        if (saltInfo == null) {
+	        	// 존재하지 않는 아이디면
+	            throw new UplusException("아이디 또는 비밀번호가 일치하지 않습니다.");
+	        }
+	        
 	        byte[] pwdHash = OpenCrypt.getSHA256(m.getPassword(), saltInfo.getSalt());
 	        String pwdHashHex = OpenCrypt.byteArrayToHex(pwdHash);
 	        m.setPassword(pwdHashHex);
@@ -104,11 +109,14 @@ public class MemberService {
 	        Member loginUser = memberDao.login(m);
 	        
 	        if (loginUser == null) {
+	        	// 비밀번호 불일치 시
 	            throw new UplusException("아이디 또는 비밀번호가 일치하지 않습니다.");
 	        }
 			
 			return loginUser;
 			
+		} catch (UplusException e) {
+			throw e;
 		} catch (Exception e) {
 			throw new UplusException("잠시 후 다시 시도해 주세요");
 		}
