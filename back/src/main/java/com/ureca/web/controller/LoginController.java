@@ -38,7 +38,6 @@ public class LoginController {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("user", loginUser);
 				System.out.println("========로그인 성공 시 세션 부여========");
-				System.out.println("Session created: " + session.isNew());
 				System.out.println("Session ID: " + session.getId());
 				
 				response.put("msg", "success");
